@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:placar_volei/src/routing/routes.dart';
-import 'package:placar_volei/src/ui/home_view/widgets/score_screen.dart';
+import 'package:placar_volei/src/ui/home_view/home_view.dart';
 
 GoRouter router() {
   return GoRouter(
@@ -8,7 +8,7 @@ GoRouter router() {
     routes: [
       GoRoute(
         path: Routes.home,
-        builder: (context, state) => FlipCard(),
+        builder: (context, state) => HomeView(),
       ),
     ],
   );
