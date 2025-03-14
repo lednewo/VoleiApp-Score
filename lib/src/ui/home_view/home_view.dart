@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:placar_volei/src/routing/routes.dart';
 import 'package:placar_volei/src/ui/home_view/controller/home_view_controller.dart';
 import 'package:placar_volei/src/ui/home_view/widgets/button_act_widget.dart';
 import 'package:placar_volei/src/ui/home_view/widgets/placar_widget.dart';
@@ -25,7 +27,28 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: controllerScore.resetScore,
+        backgroundColor: Color(0xFF202020),
+        elevation: 0,
+        child: Icon(
+          Icons.cleaning_services_outlined,
+          color: AppColors().colorText,
+        ),
+      ),
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.push(Routes.historico);
+            },
+            icon: Icon(
+              Icons.list_outlined,
+              size: 36,
+              color: AppColors().colorText,
+            ),
+          ),
+        ],
         backgroundColor: Color(0xFF202020),
         centerTitle: true,
         title: Text(
