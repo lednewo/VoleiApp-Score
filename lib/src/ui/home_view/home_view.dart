@@ -55,7 +55,7 @@ class _HomeViewState extends State<HomeView> {
                           },
                         ),
                         SizedBox(
-                          height: 1.5,
+                          height: 2.5,
                         ),
                         Consumer<HomeViewController>(
                           builder: (context, controllerScore, child) {
@@ -82,7 +82,7 @@ class _HomeViewState extends State<HomeView> {
                           },
                         ),
                         SizedBox(
-                          height: 1.5,
+                          height: 2.5,
                         ),
                         Consumer<HomeViewController>(
                           builder: (context, controllerScore, child) {
@@ -121,7 +121,7 @@ class _HomeViewState extends State<HomeView> {
                         iconColor: AppColors().colorText,
                       ),
                       SizedBox(
-                        width: 5,
+                        width: 20,
                       ),
                       ButtonActWidget(
                         onTap: controllerScore.incrementScoreCasa,
@@ -140,7 +140,7 @@ class _HomeViewState extends State<HomeView> {
                         iconColor: AppColors().colorText,
                       ),
                       SizedBox(
-                        width: 5,
+                        width: 20,
                       ),
                       ButtonActWidget(
                         onTap: controllerScore.incrementScoreFora,
