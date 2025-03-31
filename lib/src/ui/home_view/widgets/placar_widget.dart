@@ -21,18 +21,18 @@ class PlacarWidget extends StatelessWidget {
         alignment: alignment,
         heightFactor: 0.5,
         child: Container(
-          width: 100,
-          height: 120,
+          width: 210,
+          height: 250,
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(16),
           ),
           child: Center(
             child: Text(
               text,
               style: GoogleFonts.righteous(
                 color: AppColors().colorText,
-                fontSize: 60,
+                fontSize: 160,
                 fontWeight: FontWeight.bold,
               ),
             ),

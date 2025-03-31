@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:placar_volei/src/service/storage_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeViewController extends ChangeNotifier {
   int _scoreCasa = 0;
@@ -16,13 +15,6 @@ class HomeViewController extends ChangeNotifier {
     _loadData();
   }
 
-  void _loadScores() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _scoreCasa = prefs.getInt('scoreCasa') ?? 0;
-    _scoreFora = prefs.getInt('scoreFora') ?? 0;
-    notifyListeners();
-  }
-
   Future<void> _loadData() async {
     var scores = await _storageService.loadScores();
     _scoreCasa = scores['scoreCasa']!;
@@ -32,9 +24,13 @@ class HomeViewController extends ChangeNotifier {
   }
 
   void incrementScoreCasa() {
-    _scoreCasa++;
-    _saveScores();
-    notifyListeners();
+    if (_scoreCasa < 99) {
+      _scoreCasa++;
+      _saveScores();
+      notifyListeners();
+    } else {
+      _scoreCasa = 0;
+    }
   }
 
   void decrementScoreCasa() {
@@ -54,9 +50,13 @@ class HomeViewController extends ChangeNotifier {
   }
 
   void incrementScoreFora() {
-    _scoreFora++;
-    _saveScores();
-    notifyListeners();
+    if (_scoreFora < 99) {
+      _scoreFora++;
+      _saveScores();
+      notifyListeners();
+    } else {
+      _scoreFora = 0;
+    }
   }
 
   void decrementScoreFora() {
@@ -84,7 +84,6 @@ class HomeViewController extends ChangeNotifier {
     _scoreCasa = 0;
     _scoreFora = 0;
     _saveScores();
-    print(_historico);
     notifyListeners();
   }
 }

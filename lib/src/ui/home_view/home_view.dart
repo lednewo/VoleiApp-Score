@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:placar_volei/src/routing/routes.dart';
 import 'package:placar_volei/src/ui/home_view/controller/home_view_controller.dart';
 import 'package:placar_volei/src/ui/home_view/widgets/button_act_widget.dart';
 import 'package:placar_volei/src/ui/home_view/widgets/placar_widget.dart';
@@ -36,248 +34,159 @@ class _HomeViewState extends State<HomeView> {
           color: AppColors().colorText,
         ),
       ),
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.push(Routes.historico);
-            },
-            icon: Icon(
-              Icons.list_outlined,
-              size: 36,
-              color: AppColors().colorText,
-            ),
-          ),
-        ],
-        backgroundColor: Color(0xFF202020),
-        centerTitle: true,
-        title: Text(
-          'VÔLEI DA ORLA',
-          style: GoogleFonts.quicksand(
-            color: AppColors().colorText,
-            fontSize: 32,
-          ),
-        ),
-      ),
       backgroundColor: AppColors().colorBg,
       body: Stack(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFF202020),
-                  borderRadius: BorderRadius.circular(22),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 50, horizontal: 30),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(22),
-                              decoration: BoxDecoration(
-                                color: AppColors().timeDaCasa,
-                                borderRadius: BorderRadius.circular(16),
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 6,
-                                      spreadRadius: 4,
-                                      color:
-                                          AppColors().timeDaCasa.withAlpha(200))
-                                ],
-                              ),
-                              child: Icon(
-                                Icons.sports_volleyball,
-                                color: AppColors().colorText,
-                                size: 52,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 12,
-                            ),
-                            Text(
-                              'TIME DA CASA',
-                              style: GoogleFonts.quicksand(
-                                  color: AppColors().timeDaCasa,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 22,
-                            ),
-                            Consumer<HomeViewController>(
-                              builder: (context, controllerScore, child) {
-                                return PlacarWidget(
-                                  text: '${controllerScore.scoreCasa}',
-                                  alignment: Alignment.topCenter,
-                                  color: AppColors().timeDaCasa2,
-                                );
-                              },
-                            ),
-                            SizedBox(
-                              height: 1.5,
-                            ),
-                            Consumer<HomeViewController>(
-                              builder: (context, controllerScore, child) {
-                                return PlacarWidget(
-                                  text: '${controllerScore.scoreCasa}',
-                                  alignment: Alignment.bottomCenter,
-                                  color: AppColors().timeDaCasa2,
-                                );
-                              },
-                            ),
-                          ],
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Consumer<HomeViewController>(
+                          builder: (context, controllerScore, child) {
+                            return PlacarWidget(
+                              text: '${controllerScore.scoreCasa}',
+                              alignment: Alignment.topCenter,
+                              color: AppColors().timeDaCasa2,
+                            );
+                          },
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(22),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: AppColors().timeDeFora,
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 6,
-                                      spreadRadius: 4,
-                                      color:
-                                          AppColors().timeDeFora.withAlpha(200))
-                                ],
-                              ),
-                              child: Icon(
-                                Icons.sports_volleyball,
-                                color: AppColors().colorText,
-                                size: 52,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 12,
-                            ),
-                            Text(
-                              'TIME DE FORA',
-                              style: GoogleFonts.quicksand(
-                                  color: AppColors().timeDeFora,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 22,
-                            ),
-                            Consumer<HomeViewController>(
-                              builder: (context, controllerScore, child) {
-                                return PlacarWidget(
-                                  text: '${controllerScore.scoreFora}',
-                                  alignment: Alignment.topCenter,
-                                  color: AppColors().timeDeFora2,
-                                );
-                              },
-                            ),
-                            SizedBox(
-                              height: 1.5,
-                            ),
-                            Consumer<HomeViewController>(
-                              builder: (context, controllerScore, child) {
-                                return PlacarWidget(
-                                  text: '${controllerScore.scoreFora}',
-                                  alignment: Alignment.bottomCenter,
-                                  color: AppColors().timeDeFora2,
-                                );
-                              },
-                            ),
-                          ],
+                        SizedBox(
+                          height: 1.5,
                         ),
-                      ),
+                        Consumer<HomeViewController>(
+                          builder: (context, controllerScore, child) {
+                            return PlacarWidget(
+                              text: '${controllerScore.scoreCasa}',
+                              alignment: Alignment.bottomCenter,
+                              color: AppColors().timeDaCasa2,
+                            );
+                          },
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Consumer<HomeViewController>(
+                          builder: (context, controllerScore, child) {
+                            return PlacarWidget(
+                              text: '${controllerScore.scoreFora}',
+                              alignment: Alignment.topCenter,
+                              color: AppColors().timeDeFora2,
+                            );
+                          },
+                        ),
+                        SizedBox(
+                          height: 1.5,
+                        ),
+                        Consumer<HomeViewController>(
+                          builder: (context, controllerScore, child) {
+                            return PlacarWidget(
+                              text: '${controllerScore.scoreFora}',
+                              alignment: Alignment.bottomCenter,
+                              color: AppColors().timeDeFora2,
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
           Positioned(
-            bottom: 30,
-            left: 0,
-            right: 0,
+            bottom: 20,
+            left: -15,
+            right: -15,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 10,
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Column(
+                  Row(
                     children: [
-                      Text(
-                        'TIME A',
-                        style: GoogleFonts.quicksand(
-                            color: AppColors().colorText,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                      ButtonActWidget(
+                        onTap: controllerScore.decrementScoreCasa,
+                        icon: Icons.remove,
+                        bgColor: AppColors().timeDeFora2,
+                        iconColor: AppColors().colorText,
                       ),
-                      Row(
-                        children: [
-                          ButtonActWidget(
-                            onTap: controllerScore.decrementScoreCasa,
-                            icon: Icons.remove,
-                            bgColor: AppColors().timeDeFora2,
-                            iconColor: AppColors().colorText,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          ButtonActWidget(
-                            onTap: controllerScore.incrementScoreCasa,
-                            icon: Icons.add,
-                            bgColor: AppColors().colorGreen,
-                            iconColor: AppColors().colorText,
-                          ),
-                        ],
+                      SizedBox(
+                        width: 5,
+                      ),
+                      ButtonActWidget(
+                        onTap: controllerScore.incrementScoreCasa,
+                        icon: Icons.add,
+                        bgColor: AppColors().colorGreen,
+                        iconColor: AppColors().colorText,
                       ),
                     ],
                   ),
-                  Column(
+                  Row(
                     children: [
-                      Text(
-                        'TIME B',
-                        style: GoogleFonts.quicksand(
-                            color: AppColors().colorText,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                      ButtonActWidget(
+                        onTap: controllerScore.decrementScoreFora,
+                        icon: Icons.remove,
+                        bgColor: AppColors().timeDeFora2,
+                        iconColor: AppColors().colorText,
                       ),
-                      Row(
-                        children: [
-                          ButtonActWidget(
-                            onTap: controllerScore.decrementScoreFora,
-                            icon: Icons.remove,
-                            bgColor: AppColors().timeDeFora2,
-                            iconColor: AppColors().colorText,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          ButtonActWidget(
-                            onTap: controllerScore.incrementScoreFora,
-                            icon: Icons.add,
-                            bgColor: AppColors().colorGreen,
-                            iconColor: AppColors().colorText,
-                          ),
-                        ],
+                      SizedBox(
+                        width: 5,
+                      ),
+                      ButtonActWidget(
+                        onTap: controllerScore.incrementScoreFora,
+                        icon: Icons.add,
+                        bgColor: AppColors().colorGreen,
+                        iconColor: AppColors().colorText,
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-          )
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 36, 36, 36),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: Text(
+                    'Vôlei da Orla',
+                    style: GoogleFonts.arimo(
+                      color: AppColors().colorText,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Center(
+            child: Icon(
+              Icons.close_rounded,
+              size: 82,
+              color: AppColors().colorText,
+            ),
+          ),
         ],
       ),
     );

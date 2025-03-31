@@ -16,6 +16,7 @@ class ButtonActWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      radius: 12,
       onTap: onTap,
       child: Ink(
         padding: EdgeInsets.all(8),
